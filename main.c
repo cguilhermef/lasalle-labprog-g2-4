@@ -9,7 +9,7 @@ int main()
     //Adicionado um comentário apenas para gerar alteração
     char * ptr_ch = NULL;
 
-    ptr_ch = my_strchr(teste, 't');
+    ptr_ch = my_strchr(teste, 'h');
 
     while(*ptr_ch != '\0')
     {
@@ -73,6 +73,5 @@ int main()
 //    *dest = "\0";
 //    *dest = "abcd5678\0";
 //    printf("-> %s", *dest);
-    
     return 0;
 }

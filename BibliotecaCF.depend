@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1463627391 source:d:\sistemas para internet\laboratorio de programacao\g2\trab_g2\lasalle-labprog-g2-4\biblioteca_cf.c
+	<stdio.h>
+	"biblioteca_cf.h"
+
+1463536849 d:\sistemas para internet\laboratorio de programacao\g2\trab_g2\lasalle-labprog-g2-4\biblioteca_cf.h
+
+1463697827 source:d:\sistemas para internet\laboratorio de programacao\g2\trab_g2\lasalle-labprog-g2-4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca_cf.h"
+
