@@ -52,26 +52,46 @@ int main()
 //      a++;
 //    }
     
-      int * dest;
-      dest = (int *) malloc(4*sizeof(int));
-      *dest = (char *) malloc(8*sizeof(char));
-      *dest = "opa\0";
-      dest++;
-      *dest = (char *) malloc(8*sizeof(char));
-      *dest = "ola\0";  
-      dest--;
-      printf("\n%s", *dest);
-      dest++;
-      printf("\n%s", *dest);
-      
-      
-//    char * dest;
+//      int * dest;
+//      dest = (int *) malloc(4*sizeof(int));
+//      *dest = (char *) malloc(sizeof(char));
+//      *dest = "opaaaasdadadasd\0";
+//        
+//        
+//        dest[0] = array char[10];
+//        
+//        
 //    
-//    dest = (char * )malloc(4*sizeof(int));
-//    (*dest) = (char *)malloc(8*sizeof(char));
-//    dest = (char *)malloc(4*sizeof(char));
-//    *dest = "\0";
-//    *dest = "abcd5678\0";
-//    printf("-> %s", *dest);
+//      dest++;
+//      *dest = (char *) malloc(8*sizeof(char));
+//      *dest = "ola\0";
+//        
+//      dest--;
+//      printf("\n%s", *dest);
+//      dest++;
+//      printf("\n%s", *dest);
+
+    char srcTeste[] = "Hoje#o#dia#esta#chuvoso!";
+    int count = 0;
+    char * result;
+    result = my_strtok(srcTeste, '#');
+
+    while (count < 3) {
+      printf("\n %s", result[count]);
+      count++;
+    }
+
+/* Este trecho funciona 
+    int * destino = (int *) malloc(5 * sizeof(int));
+    destino[0] = (char *) malloc(5 * sizeof(char));
+    destino[0] = "test";
+    destino[1] = (char *) malloc(5 * sizeof(char));
+    destino[1] = "novo";
+    printf("%d\n", destino);
+    printf("%s\n", destino[0]);
+    printf("%s\n", destino[1]);
+    printf("%d\n", &destino);
+*/
+      
     return 0;
 }
