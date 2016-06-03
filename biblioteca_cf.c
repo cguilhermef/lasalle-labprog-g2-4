@@ -60,23 +60,24 @@ char * my_strtok(char * src, char token) {
   while(src[aux] != '\0') {
     aux++;
   }
-  int countChars = aux-1;
+  printf("\n valor de aux %d \n", aux);
+  int countChars = aux;
   // normalização da string de entrada, garantindo que ela
   // termine com o token. Criada cópia de trabalho em copy
   if (src[aux-1] != token) {
-    printf("\n aqui \n");
-    copy = (char *) malloc( (aux+1) * sizeof(char));
+    copy = (char *) malloc( (aux+2) * sizeof(char));
     memcpy(copy, src, aux*sizeof(char));
     copy[aux] = '#';
     copy[aux+1] = '\0';
+    printf("\n copia 1: %s \n", copy);
   } else {
-    copy = (char *) malloc( aux * sizeof(char));
+    copy = (char *) malloc( (aux+1) * sizeof(char));
     memcpy(copy, src, aux*sizeof(char));
     copy[aux] = '\0';
+    printf("\n copia 2: %s \n", copy);
     aux--;
   }
   aux = 0;
-  printf("%s", copy);
 
   // Contagem do número de tokens existentes
   while(copy[aux] != '\0') {
@@ -87,23 +88,31 @@ char * my_strtok(char * src, char token) {
   }
   // criação do vetor temporário, com tamanho igual ao 
   // número de tokens encontrados, +1
-  char * vetor[countTokens+1];
+//  char * vetor[countTokens+1];
+  char ** vetor = (char **) malloc((countTokens+1) * sizeof(char *));
   aux = 0;
   
+  
+//  
   int stringSize = 0;
   int lastCharIndex = 0;
   int count = 0;
   char * temp = NULL;
   
+//  *vetor = (char *) malloc(5 * sizeof(char));
+//  temp = &(*vetor);
+//  *temp = "tet\0";
+  
+  
   while(copy[aux] != '\0') {
     if (copy[aux] == token && aux != 0) {
-      vetor[count] = (char *) malloc((stringSize) * sizeof(char));
-      temp = vetor[count];
-      memcpy(temp, &copy[lastCharIndex], (stringSize) * sizeof(char) );
+      *vetor = (char *) malloc((stringSize+1) * sizeof(char));
+      temp = *vetor;
+      memcpy(temp, &copy[lastCharIndex], (stringSize+1) * sizeof(char) );
       temp[stringSize] = '\0';
-      vetor[count] = temp;
-      printf("\n-%s-", vetor[count]);
+      memcpy(*vetor, temp, (stringSize+1) * sizeof(char) );
       stringSize = 0;
+      vetor++;
       count++;
     } else {
       if (stringSize == 0) {
@@ -113,7 +122,12 @@ char * my_strtok(char * src, char token) {
     }
     aux++;
   }
-  vetor[count] = token;
-  
+  *vetor = (char *) malloc(sizeof(char));
+  *vetor = token;
+  while (count > 0) {
+    vetor--;
+    count--;
+  }
+
   return vetor;
 }
